@@ -1,0 +1,42 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.wrapper {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(2, 1fr);
+  /* grid-template-columns: repeat(4, 25%); */
+  /* grid-gap: 10px; */
+  /* grid-column-gap: 5px; */
+  grid-auto-rows: minmax(100px, auto);
+}
+
+.block1 {
+  background-color: pink;
+}
+
+.block2 {
+  display: grid;
+  background-color: gray;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  grid-auto-rows: 90px;
+}
+
+.block3 {
+  background-color: pink;
+}
+
+.block4 {
+  background-color: gray;
+}
+
+.block2>div {
+  border: 1px solid black;
+}
+
+.block1, .block2, .block3, .block4 {
+  padding: 10px;
+}
