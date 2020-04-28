@@ -1,23 +1,62 @@
-.block {
-  span {
-    // вложенные свойства, вложенность
-  }
-  &:hover // будет означать .block:hover
-}
->p {
-  // будет означать что мы выбрали первый "p" (первого уровня) в .block
+ .block {
+   font-size: 14px;
+   line-height: 20px;
+ span {
+   color: red; // вложенность
+ }
+ }
 
-}
+ // можно создавать переменную:
+ $fz: 100px;
 
-// при помощи SCSS можно создавать переменные:
-$fz: 80px;
+ .block {
+   font-size: $fz;
+ }
 
-.block {
-  font-style: $fz;
-}
- 
- // можно импотировать файлы, создавая на них ссылки:
- // можно, например, прописать ссылку обнуляющий файл, который мы передадим в .css
- @import "nullstyle.scss";
- 
+ // оператор and:
+ .block {
+   color: red;
+   &:hover { // тоже самое, что и .block:hover
+   color: green;
+   }
+   p { // .block p - обращаемся ко всем элементам "p"
+   }
+   >p {
+     color: blue; // обращаемся к первому элементу "p", первого уровня
+   }
+ }
+
+ // подключаем файл:
+ @import "style.scss";
+
+ // ШАБЛОНЫ:
+ %border {
+   font-size: 100px;
+   border-bottom: 1px solid #000;
+ }
+
+ .block {
+   @extend %border; // вставляем шаблон, который уже имеет свойства
+ }
+
+ // также, шаблон можно составить таким образом:
+ .border {
+   font-size: 100px;
+   border-bottom: 1px solid #000;
+ }
+
+ .block {
+   @extend .border;
+
+
+ // МИКСИНЫ или ПРИМУСИ
+ @mixin fontz($f,$c) {
+   font-size: $f;
+   color: $c;
+ }
+
+ .block {
+   @include fontz(100px, green); // font-size: 100px; color: green;
+ }
+
  
